@@ -15,6 +15,12 @@
 # limitations under the License.
 """PyTorch BERT model."""
 
+
+"""整个模块基本上是在实现原始的BERT，分模块进行了实现，可以和李沐的版本对比学习"""
+
+
+
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
