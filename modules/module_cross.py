@@ -139,6 +139,8 @@ class CrossEmbeddings(nn.Module):
         embeddings = self.dropout(embeddings)
         return embeddings
 
+    
+# CrossSelfAttention类和原始的BERT模块下的BertSelfAttention类是完全一致的
 class CrossSelfAttention(nn.Module):
     def __init__(self, config):
         super(CrossSelfAttention, self).__init__()
