@@ -230,7 +230,7 @@ class BertAttention(nn.Module):
 
 
     
-# 此处是在实现FFN部分的结构
+# 此处是在实现FFN部分的结构， ACT2FN是一个字典，主要是一些激活函数的应用方法调用
 class BertIntermediate(nn.Module):
     def __init__(self, config):
         super(BertIntermediate, self).__init__()
