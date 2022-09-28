@@ -15,6 +15,8 @@
 # limitations under the License.
 """PyTorch BERT model."""
 
+# 总结来说，cross模块和原始的bert的模块在输入上有不同，其他没有基本上没有任何区别
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -141,6 +143,7 @@ class CrossEmbeddings(nn.Module):
 
     
 # CrossSelfAttention类和原始的BERT模块下的BertSelfAttention类是完全一致的
+
 class CrossSelfAttention(nn.Module):
     def __init__(self, config):
         super(CrossSelfAttention, self).__init__()
@@ -191,6 +194,8 @@ class CrossSelfAttention(nn.Module):
         context_layer = context_layer.view(*new_context_layer_shape)
         return context_layer
 
+    
+# 该模块与原始BERT模块下的同等类代码是完全一致的
 
 class CrossSelfOutput(nn.Module):
     def __init__(self, config):
@@ -205,7 +210,7 @@ class CrossSelfOutput(nn.Module):
         hidden_states = self.LayerNorm(hidden_states + input_tensor)
         return hidden_states
 
-
+# CrossAttention模块与原始BERT模块下的同等类代码是完全一致的
 class CrossAttention(nn.Module):
     def __init__(self, config):
         super(CrossAttention, self).__init__()
@@ -218,6 +223,8 @@ class CrossAttention(nn.Module):
         return attention_output
 
 
+    
+# CrossIntermediate模块与原始BERT模块下的同等类代码是完全一致的
 class CrossIntermediate(nn.Module):
     def __init__(self, config):
         super(CrossIntermediate, self).__init__()
@@ -230,6 +237,11 @@ class CrossIntermediate(nn.Module):
         hidden_states = self.intermediate_act_fn(hidden_states)
         return hidden_states
 
+
+    
+    
+
+# CrossOutput模块与原始BERT模块下的同等类代码是完全一致的
 
 class CrossOutput(nn.Module):
     def __init__(self, config):
@@ -244,6 +256,9 @@ class CrossOutput(nn.Module):
         hidden_states = self.LayerNorm(hidden_states + input_tensor)
         return hidden_states
 
+    
+    
+# CrossLayer模块与原始BERT模块下的同等类代码是完全一致的
 
 class CrossLayer(nn.Module):
     def __init__(self, config):
@@ -258,6 +273,8 @@ class CrossLayer(nn.Module):
         layer_output = self.output(intermediate_output, attention_output)
         return layer_output
 
+    
+# CrossEncoder模块与原始BERT模块下的同等类代码是完全一致的
 
 class CrossEncoder(nn.Module):
     def __init__(self, config):
@@ -276,6 +293,9 @@ class CrossEncoder(nn.Module):
         return all_encoder_layers
 
 
+    
+# CrossPooler模块与原始BERT模块下的同等类代码是完全一致的    
+    
 class CrossPooler(nn.Module):
     def __init__(self, config):
         super(CrossPooler, self).__init__()
