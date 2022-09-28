@@ -106,6 +106,8 @@ class CrossConfig(PretrainedConfig):
                              "or the path to a pretrained model config file (str)")
 
 
+# 这里与bert原始结构最主要的区别是，输入不再是token的input_ids，而是concat_embeddings了
+
 class CrossEmbeddings(nn.Module):
     """Construct the embeddings from word, position and token_type embeddings.
     """
