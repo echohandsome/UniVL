@@ -229,6 +229,8 @@ class BertAttention(nn.Module):
         return attention_output
 
 
+    
+# 此处是在实现FFN部分的结构
 class BertIntermediate(nn.Module):
     def __init__(self, config):
         super(BertIntermediate, self).__init__()
