@@ -129,10 +129,10 @@ class VisualEmbeddings(nn.Module):
         position_ids = torch.arange(seq_length, dtype=torch.long, device=input_embeddings.device)
         position_ids = position_ids.unsqueeze(0).expand(input_embeddings.size(0), -1)                     # 将position_ids扩大到batch_size相同的维度，方便后期相加
 
-        words_embeddings = self.word_embeddings(input_embeddings)
+        words_embeddings = self.word_embeddings(input_embeddings)                                         # 这里仍然将视频帧通过一个fc_layer进行embedding层对齐，方便相加
         # words_embeddings = self.transform_act_fn(words_embeddings)
 
-        position_embeddings = self.position_embeddings(position_ids)
+        position_embeddings = self.position_embeddings(position_ids)                                     
         embeddings = words_embeddings + position_embeddings
 
         embeddings = self.LayerNorm(embeddings)
