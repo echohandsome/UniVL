@@ -18,7 +18,7 @@
 
 """经过对比代码结构，visual的结构上，主要是输入和mask上和原始的BERT是不同的，其他代码基本上是一致的"""
 
-
+# 在输入上，visual的position_ids是直接将每一帧的位置的索引作为位置参数的
 
 
 from __future__ import absolute_import
