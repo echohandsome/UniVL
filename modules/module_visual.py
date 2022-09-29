@@ -15,6 +15,12 @@
 # limitations under the License.
 """PyTorch BERT model."""
 
+
+"""经过对比代码结构，visual的结构上，主要是输入和mask上和原始的BERT是不同的，其他代码基本上是一致的"""
+
+
+
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -100,6 +106,9 @@ class VisualConfig(PretrainedConfig):
         else:
             raise ValueError("First argument must be either a vocabulary size (int)"
                              "or the path to a pretrained model config file (str)")
+
+            
+# 这个地方和原始的BERT对比，是去掉了segment_ids和对应的embedding的
 
 class VisualEmbeddings(nn.Module):
     """Construct the embeddings from word, position and token_type embeddings.
