@@ -127,7 +127,7 @@ class VisualEmbeddings(nn.Module):
     def forward(self, input_embeddings):
         seq_length = input_embeddings.size(1)
         position_ids = torch.arange(seq_length, dtype=torch.long, device=input_embeddings.device)
-        position_ids = position_ids.unsqueeze(0).expand(input_embeddings.size(0), -1)
+        position_ids = position_ids.unsqueeze(0).expand(input_embeddings.size(0), -1)                     # 将position_ids扩大到batch_size相同的维度，方便后期相加
 
         words_embeddings = self.word_embeddings(input_embeddings)
         # words_embeddings = self.transform_act_fn(words_embeddings)
