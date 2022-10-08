@@ -390,6 +390,7 @@ class DecoderModel(PreTrainedModel):
         extended_answer_mask = extended_answer_mask.to(dtype=self.dtype)  # fp16 compatibility
 
         sz_b, len_s, _ = embedding_output.size()
+        # torch.triu 返回一个上三角矩阵
         subsequent_mask = torch.triu(torch.ones((len_s, len_s), device=embedding_output.device, dtype=embedding_output.dtype), diagonal=1)
         self_attn_mask = subsequent_mask.unsqueeze(0).expand(sz_b, -1, -1).unsqueeze(1)  # b x 1 x ls x ls
         slf_attn_mask = ((1.0 - extended_answer_mask) + self_attn_mask).gt(0).to(dtype=self.dtype)
