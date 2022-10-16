@@ -187,6 +187,9 @@ class BertSelfAttention(nn.Module):
         attention_scores = torch.matmul(query_layer, key_layer.transpose(-1, -2))
         attention_scores = attention_scores / math.sqrt(self.attention_head_size)
         # Apply the attention mask is (precomputed for all layers in BertModel forward() function)
+        
+        # 为什么需要attention mask，这里已经非常清晰了，由于我们需要计算注意力分数，而后面的部分都是padding的，这时候将会干扰softmax的结果，那么就给这部分padding的
+        # 让原来本身的分数，加上一个非常大的负数，这个负数，将会导致最后这部分的softmax计算出来的结果，分子部分就是0，那么根据softmax的结果，计算出来也是0，不影响softmax的结果
         attention_scores = attention_scores + attention_mask
 
         # Normalize the attention scores to probabilities.
