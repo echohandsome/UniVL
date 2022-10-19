@@ -351,6 +351,7 @@ class BertOnlyMLMHead(nn.Module):
         return prediction_scores
 
 
+# Next sentence predict预训练任务
 class BertOnlyNSPHead(nn.Module):
     def __init__(self, config):
         super(BertOnlyNSPHead, self).__init__()
